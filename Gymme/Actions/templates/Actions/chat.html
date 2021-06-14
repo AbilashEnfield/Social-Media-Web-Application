@@ -1,0 +1,288 @@
+{% load static %}
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Adda - Social Network HTML Template</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="https://demo.hasthemes.com/adda-preview/adda/assets/images/favicon.ico">
+
+    <!-- CSS
+	============================================ -->
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="    https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adda-preview/adda/assets/css/vendor/bootstrap.min.css">
+    <!-- Icon Font CSS -->
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adda-preview/adda/assets/css/vendor/bicon.min.css">
+    <!-- Flat Icon CSS -->
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adda-preview/adda/assets/css/vendor/flaticon.css">
+    <script src="https://kit.fontawesome.com/e62a230ef4.js" crossorigin="anonymous"></script>
+    <!-- audio & video player CSS -->
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adda-preview/adda/assets/css/plugins/plyr.css">
+    <!-- Slick CSS -->
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adda-preview/adda/assets/css/plugins/slick.min.css">
+    <!-- nice-select CSS -->
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adda-preview/adda/assets/css/plugins/nice-select.css">
+    <!-- perfect scrollbar css -->
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adda-preview/adda/assets/css/plugins/perfect-scrollbar.css">
+    <!-- light gallery css -->
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adda-preview/adda/assets/css/plugins/lightgallery.min.css">
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        <style>
+        .statusBar {
+                margin-top: -2%;
+                margin-left: 24%;
+                width: 100%;
+        }
+        .postData {
+                margin-left: 24%;
+        }
+        .rounded{
+            border-radius: 1.25rem!important;
+        }
+        .dropdown-toggle::after {
+            content: none;
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- header area start -->
+    <header>
+        <div class="header-top sticky bg-white d-none d-lg-block">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-5">
+                        <!-- header top navigation start -->
+                        <div class="header-top-navigation">
+                            <nav>
+                                <ul>
+                                    <li class="active"><a href="{% url 'home' %}"><img src="{% static 'images/app log.png'%}" alt=""></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- header top navigation start -->
+                    </div>
+
+                    <div class="col-md-5">
+                        <div class="header-top-right d-flex align-items-center justify-content-end">
+                            <!-- header top search start -->
+                            <div class="header-top-search" style="margin-top:2%; margin-right: 27%">
+                                <form class="top-search-box " method="POST">
+                                    {% csrf_token%}
+                                    <input type="text" placeholder="Search" name="search" class="top-search-field">
+                                    <button class="top-search-btn" type="submit"><i class="flaticon-search"></i></button>
+
+                                </form>
+                            </div>
+                            <!-- header top search end -->
+                            <div ><a class="" href="{% url 'home'%}" style="margin-left: 10%"><i class="fas fa-home" style="color: #FFA500;"></i></a></div>
+                            <a href="{% url 'chat'%}" style="margin-left: 5%"><i class="fas fa-comments" style="color: #FFA500;"></i></a>
+                            <a href="{% url 'explore'%}" style="margin-left: 5%"><i class="fas fa-dumbbell" style="color: #FFA500;"></i></a>
+                            <a href="" style="margin-left: 5%"><i class="fas fa-fire-alt" style="color: #FFA500;"></i></a>
+
+                                                        <!-- profile picture start -->
+                            <div class="profile-setting-box" style="margin-left: -45%; margin-right: 31%;">
+                                <div class=" profile-thumb-small dropdown" style="margin-left: 700%">
+
+                                        <button class=" btn btn dropdown-toggle" type="button" data-toggle="dropdown" style="color: none;">
+                                            <img src="{{target.userimage}}" alt="profile picture" class="rounded">
+                                            <span class="caret"></span>
+                                        </button>
+                                    <div class="dropdown-menu">
+                                        <div class="profile-head">
+                                            <h5 class="name"><a href="#">{{target}}</a></h5>
+                                        </div>
+                                        <div class="profile-body">
+                                            <ul>
+                                                <li><a href="{% url 'profile'%}"><i class="flaticon-user"></i>Profile</a></li>
+                                                <li><a href="#"><i class="flaticon-settings"></i>Setting</a></li>
+                                                <li><a href="{% url 'userSignout'%}"><i class="flaticon-unlock"></i>Sign out</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header area end -->
+    <!-- header area start -->
+    <header>
+        <div class="mobile-header-wrapper sticky d-block d-lg-none">
+            <div class="mobile-header position-relative ">
+                <div class="mobile-logo" style="background:none;">
+                    <a href="index.html">
+                        <img src="{% static 'images/app log.png'%}" alt="logo">
+                    </a>
+                </div>
+                <div class="mobile-menu w-100">
+                    <ul>
+                        <li>
+                            <div ><a class="" href="{% url 'home'%}" style="margin-left: 10%"><i class="fas fa-home" style="color: #FFA500;"></i></a></div>
+                        </li>
+                        <li>
+                            <a href="{% url 'chat'%}" style="margin-left: 5%"><i class="fas fa-comments" style="color: #FFA500;"></i></a>
+
+                        </li>
+                        <li>
+                            <a href="{% url 'explore'%}" style="margin-left: 5%"><i class="fas fa-dumbbell" style="color: #FFA500;"></i></a>
+
+                        </li>
+                        <li>
+                            <a href="" style="margin-left: 5%"><i class="fas fa-fire-alt" style="color: #FFA500;"></i></a>
+
+                        </li>
+                    </ul>
+                </div>
+                <div class="mobile-header-profile" style="background:none;">
+                    <!-- profile picture end -->
+                    <div class="profile-thumb profile-setting-box" style="background:none;">
+                        <a href="javascript:void(0)" class="profile-triger">
+                            <figure class="profile-thumb-middle">
+                                <img src="{{target.userimage}}" alt="profile picture">
+                            </figure>
+                        </a>
+                        <div class="profile-dropdown text-left">
+                            <div class="profile-head">
+                                <h5 class="name"><a href="#">{{target}}</a></h5>
+                            </div>
+                            <div class="profile-body">
+                                <ul>
+                                    <li><a href="{% url 'profile' %}"><i class="flaticon-user"></i>Profile</a></li>
+                                    <li><a href="#"><i class="flaticon-message"></i>Inbox</a></li>
+                                    <li><a href="#"><i class="flaticon-document"></i>Activity</a></li>
+                                </ul>
+                                <ul>
+                                    <li><a href="#"><i class="flaticon-settings"></i>Setting</a></li>
+                                    <li><a href="{% url 'userSignout'%}"><i class="flaticon-unlock"></i>Sing out</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- profile picture end -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header area end -->
+
+    <main>
+      <div class="row">
+        <div class="col-lg-3 order-2 order-lg-1" style="margin-left: 2%; margin-top: 7%;">
+                        <aside class="widget-area">
+                            <!-- widget single item start -->
+                            <div class="card widget-item">
+                                <h4 class="widget-title">Chat list</h4>
+                                <div class="widget-body">
+                                    <ul class="like-page-list-wrapper">
+
+                                    {% for x in chat %}
+                                        {% if trainer == True%}
+                                        <li class="msg-list-item d-flex justify-content-between">
+                                            <!-- profile picture end -->
+                                            <div class="profile-thumb">
+                                                <figure class="profile-thumb-middle">
+                                                    <img src="{{x.trainee.userimage}}" alt="profile picture">
+                                                </figure>
+                                            </div>
+                                            <!-- profile picture end -->
+
+                                            <!-- message content start -->
+                                            <div class="msg-content">
+                                                <h6 class="author"><a href="{% url 'chatroom' x.roomcode %}">{{ x.trainee }}</a></h6>
+                                            </div>
+                                            <!-- message content end -->
+
+                                            <!-- message time start -->
+                                            <div class="msg-time">
+                                                <p>25 Apr 2019</p>
+                                            </div>
+                                            <!-- message time end -->
+                                        </li>
+                                        {% else %}
+                                        <li class="msg-list-item d-flex justify-content-between">
+                                            <!-- profile picture end -->
+                                            <div class="profile-thumb">
+                                                <figure class="profile-thumb-middle">
+                                                    <img src="{{x.trainerChat.userimage}}" alt="profile picture">
+                                                </figure>
+                                            </div>
+                                            <!-- profile picture end -->
+
+                                            <!-- message content start -->
+                                            <div class="msg-content">
+                                                <h6 class="author"><a href="{% url 'chatroom' x.roomcode %}">{{ x.trainerChat }}</a></h6>
+                                            </div>
+                                            <!-- message content end -->
+
+                                            <!-- message time start -->
+                                            <div class="msg-time">
+                                                <p>25 Apr 2019</p>
+                                            </div>
+                                            <!-- message time end -->
+                                        </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- widget single item end -->
+                        </aside>
+        </div>
+        <div class="col-lg-7 col-md-12 order-2 order-lg-1" style="margin-left: 2%; margin-top: 7%;">
+          <div class="p-4" style="margin-left: 30%; margin-top: 25%;">
+            <ul class="list-inline two-part d-flex align-items-center ">
+              <li><h4 style="color: #FFA500;">Create Chat</h4></li>
+              <li style="margin-left: 1rem;"><i class="fas fa-comment-medical fa-2x" style="color: #FFA500;"></i></li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="row">
+
+      </div>
+    </main>
+    <!-- JS
+============================================ -->
+
+    <!-- Modernizer JS -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/vendor/modernizr-3.6.0.min.js"></script>
+    <!-- jQuery JS -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/vendor/jquery-3.3.1.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/vendor/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/vendor/bootstrap.min.js"></script>
+    <!-- Slick Slider JS -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/plugins/slick.min.js"></script>
+    <!-- nice select JS -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/plugins/nice-select.min.js"></script>
+    <!-- audio video player JS -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/plugins/plyr.min.js"></script>
+    <!-- perfect scrollbar js -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <!-- light gallery js -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/plugins/lightgallery-all.min.js"></script>
+    <!-- image loaded js -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/plugins/imagesloaded.pkgd.min.js"></script>
+    <!-- isotope filter js -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/plugins/isotope.pkgd.min.js"></script>
+    <!-- Main JS -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/main.js"></script>
+
+
+</body>
+</html>

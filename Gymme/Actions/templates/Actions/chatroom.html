@@ -1,0 +1,688 @@
+{% load static %}
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Adda - Social Network HTML Template</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="https://demo.hasthemes.com/adda-preview/adda/assets/images/favicon.ico">
+
+    <!-- CSS
+	============================================ -->
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="    https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adda-preview/adda/assets/css/vendor/bootstrap.min.css">
+    <!-- Icon Font CSS -->
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adda-preview/adda/assets/css/vendor/bicon.min.css">
+    <!-- Flat Icon CSS -->
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adda-preview/adda/assets/css/vendor/flaticon.css">
+    <script src="https://kit.fontawesome.com/e62a230ef4.js" crossorigin="anonymous"></script>
+    <!-- audio & video player CSS -->
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adda-preview/adda/assets/css/plugins/plyr.css">
+    <!-- Slick CSS -->
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adda-preview/adda/assets/css/plugins/slick.min.css">
+    <!-- nice-select CSS -->
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adda-preview/adda/assets/css/plugins/nice-select.css">
+    <!-- perfect scrollbar css -->
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adda-preview/adda/assets/css/plugins/perfect-scrollbar.css">
+    <!-- light gallery css -->
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adda-preview/adda/assets/css/plugins/lightgallery.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"></script>    <!-- Main Style CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/chatStyle.css' %}">
+        <style>
+        .statusBar {
+                margin-top: -2%;
+                margin-left: 24%;
+                width: 100%;
+        }
+        .postData {
+                margin-left: 24%;
+        }
+        .rounded{
+            border-radius: 1.25rem!important;
+        }
+        .dropdown-toggle::after {
+            content: none;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- header area start -->
+    <header>
+        <div class="header-top sticky bg-white d-none d-lg-block">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-5">
+                        <!-- header top navigation start -->
+                        <div class="header-top-navigation">
+                            <nav>
+                                <ul>
+                                    <li class="active"><a href="{% url 'home' %}"><img src="{% static 'images/app log.png'%}" alt=""></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- header top navigation start -->
+                    </div>
+
+                    <div class="col-md-5">
+                        <div class="header-top-right d-flex align-items-center justify-content-end">
+                            <!-- header top search start -->
+                            <div class="header-top-search" style="margin-top:2%; margin-right: 27%">
+                                <form class="top-search-box " method="POST">
+                                    {% csrf_token%}
+                                    <input type="text" placeholder="Search" name="search" class="top-search-field">
+                                    <button class="top-search-btn" type="submit"><i class="flaticon-search"></i></button>
+
+                                </form>
+                            </div>
+                            <!-- header top search end -->
+                            <div ><a class="" href="{% url 'home'%}" style="margin-left: 10%"><i class="fas fa-home" style="color: #FFA500;"></i></a></div>
+                            <a href="{% url 'chat'%}" style="margin-left: 5%"><i class="fas fa-comments" style="color: #FFA500;"></i></a>
+                            <a href="{% url 'explore'%}" style="margin-left: 5%"><i class="fas fa-dumbbell" style="color: #FFA500;"></i></a>
+                            <a href="" style="margin-left: 5%"><i class="fas fa-fire-alt" style="color: #FFA500;"></i></a>
+
+                                                        <!-- profile picture start -->
+                            <div class="profile-setting-box" style="margin-left: -45%; margin-right: 31%;">
+                                <div class=" profile-thumb-small dropdown" style="margin-left: 700%">
+
+                                        <button class=" btn btn dropdown-toggle" type="button" data-toggle="dropdown" style="color: none;">
+                                            <img src="{{target.userimage}}" alt="profile picture" class="rounded">
+                                            <span class="caret"></span>
+                                        </button>
+                                    <div class="dropdown-menu">
+                                        <div class="profile-head">
+                                            <h5 class="name"><a href="#">{{target}}</a></h5>
+                                        </div>
+                                        <div class="profile-body">
+                                            <ul>
+                                                <li><a href="{% url 'profile'%}"><i class="flaticon-user"></i>Profile</a></li>
+                                                <li><a href="#"><i class="flaticon-settings"></i>Setting</a></li>
+                                                <li><a href="{% url 'userSignout'%}"><i class="flaticon-unlock"></i>Sign out</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header area end -->
+    <!-- header area start -->
+    <header>
+        <div class="mobile-header-wrapper sticky d-block d-lg-none">
+            <div class="mobile-header position-relative ">
+                <div class="mobile-logo" style="background:none;">
+                    <a href="index.html">
+                        <img src="{% static 'images/app log.png'%}" alt="logo">
+                    </a>
+                </div>
+                <div class="mobile-menu w-100">
+                    <ul>
+                        <li>
+                            <div ><a class="" href="{% url 'home'%}" style="margin-left: 10%"><i class="fas fa-home" style="color: #FFA500;"></i></a></div>
+                        </li>
+                        <li>
+                            <a href="{% url 'chat'%}" style="margin-left: 5%"><i class="fas fa-comments" style="color: #FFA500;"></i></a>
+
+                        </li>
+                        <li>
+                            <a href="{% url 'explore'%}" style="margin-left: 5%"><i class="fas fa-dumbbell" style="color: #FFA500;"></i></a>
+
+                        </li>
+                        <li>
+                            <a href="" style="margin-left: 5%"><i class="fas fa-fire-alt" style="color: #FFA500;"></i></a>
+
+                        </li>
+                    </ul>
+                </div>
+                <div class="mobile-header-profile" style="background:none;">
+                    <!-- profile picture end -->
+                    <div class="profile-thumb profile-setting-box" style="background:none;">
+                        <a href="javascript:void(0)" class="profile-triger">
+                            <figure class="profile-thumb-middle">
+                                <img src="{{target.userimage}}" alt="profile picture">
+                            </figure>
+                        </a>
+                        <div class="profile-dropdown text-left">
+                            <div class="profile-head">
+                                <h5 class="name"><a href="#">{{target}}</a></h5>
+                            </div>
+                            <div class="profile-body">
+                                <ul>
+                                    <li><a href="{% url 'profile' %}"><i class="flaticon-user"></i>Profile</a></li>
+                                    <li><a href="#"><i class="flaticon-message"></i>Inbox</a></li>
+                                    <li><a href="#"><i class="flaticon-document"></i>Activity</a></li>
+                                </ul>
+                                <ul>
+                                    <li><a href="#"><i class="flaticon-settings"></i>Setting</a></li>
+                                    <li><a href="{% url 'userSignout'%}"><i class="flaticon-unlock"></i>Sing out</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- profile picture end -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header area end -->
+
+    <main>
+      <div class="row">
+        <div class="col-lg-7 col-md-12 order-2 order-lg-1" style="margin-left: 2%; margin-top: 7%;">
+
+
+
+        </div>
+
+      </div>
+      <div class="row">
+		<div class="container-fluid h-100">
+			<div class="row justify-content-center h-100">
+				<div class="col-md-4 col-xl-3 chat"><div class="card mb-sm-3 mb-md-0 contacts_card">
+					<div class="card-header">
+						<div class="input-group">
+							<input type="text" placeholder="Search..." name="" class="form-control search">
+							<div class="input-group-prepend">
+								<span class="input-group-text search_btn"><i class="fas fa-search"></i></span>
+							</div>
+						</div>
+					</div>
+					<div class="card-body contacts_body">
+						<ul class="contacts">
+                    {% for x in chatList %}
+                        {% if trainer == True%}
+                            <li class="active">
+							<div class="d-flex bd-highlight">
+								<div class="img_cont">
+									<img src="{{x.trainee.userimage}}" class="rounded-circle user_img">
+									<span class="online_icon"></span>
+								</div>
+								<div class="user_info">
+                        <span><a href="{% url 'chatroom' x.roomcode %}">{{ x.trainee }}</a></span>
+									<p>{{ x.trainee }} is online</p>
+								</div>
+							</div>
+						</li>
+                        {% else %}
+                            <li class="active">
+							<div class="d-flex bd-highlight">
+								<div class="img_cont">
+									<img src="{{x.trainerChat.userimage}}" class="rounded-circle user_img">
+									<span class="online_icon"></span>
+								</div>
+								<div class="user_info">
+									<span><a href="{% url 'chatroom' x.roomcode %}">{{ x.trainerChat }}</a></span>
+									<p>{{ x.trainerChat }} is online</p>
+								</div>
+							</div>
+						</li>
+                        {% endif %}
+                    {% endfor %}
+						</ul>
+					</div>
+					<div class="card-footer"></div>
+				</div></div>
+				<div class="col-md-8 col-xl-6 chat">
+					<div class="card" id="">
+                    {% if trainer == True %}
+						<div class="card-header msg_head">
+							<div class="d-flex bd-highlight">
+								<div class="img_cont">
+									<img src="{{couple.trainee.userimage}}" class="rounded-circle user_img">
+									<span class="online_icon"></span>
+								</div>
+								<div class="user_info">
+									<span>{{couple.trainee}}</span>
+									<p>1767 Messages</p>
+								</div>
+								<div class="video_cam">
+                                    <a href="{% url 'videocall' roomCode %}"><span><i class="fas fa-video"></i></span></a>
+								</div>
+							</div>
+							<span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
+							<div class="action_menu">
+								<ul>
+									<li><i class="fas fa-user-circle"></i> View profile</li>
+									<li><i class="fas fa-users"></i> Add to close friends</li>
+									<li><i class="fas fa-plus"></i> Add to group</li>
+									<li><i class="fas fa-ban"></i> Block</li>
+								</ul>
+							</div>
+						</div>
+                    {% else %}
+						<div class="card-header msg_head">
+							<div class="d-flex bd-highlight">
+								<div class="img_cont">
+									<img src="{{couple.trainerChat.userimage}}" class="rounded-circle user_img">
+									<span class="online_icon"></span>
+								</div>
+								<div class="user_info">
+									<span>{{couple.trainerChat}}</span>
+									<p>1767 Messages</p>
+								</div>
+								<div class="video_cam">
+                                    <a href="{% url 'videocall' roomCode %}"><button id="videoCall-btn"><span><i class="fas fa-video"></i></span></button></a>
+								</div>
+							</div>
+							<span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
+							<div class="action_menu">
+								<ul>
+									<li><i class="fas fa-user-circle"></i> View profile</li>
+									<li><i class="fas fa-users"></i> Add to close friends</li>
+									<li><i class="fas fa-plus"></i> Add to group</li>
+									<li><i class="fas fa-ban"></i> Block</li>
+								</ul>
+							</div>
+						</div>
+                    {% endif %}
+						<div class="card-body msg_card_body" id="chatScroll">
+                    {% for x in allChats %}
+                        {% if request.user == x.chatter %}
+							<div class="d-flex justify-content-end mb-4" style="margin-top: 0.5rem;">
+								<div class="img_cont_msg">
+                    {% if x.chatter.id == couple.trainerChat.trainer.id%}
+									<img src="{{couple.trainerChat.userimage}}" class="rounded-circle user_img_msg">
+                    {% else %}
+									<img src="{{couple.trainee.userimage}}" class="rounded-circle user_img_msg">
+                    {% endif %}
+								</div>
+								<div class="msg_cotainer">
+                                    <h6>{{x.chatContentText}}</h6>
+								</div>
+							</div>
+                            <div>
+                                <span class="msg_time d-flex justify-content-end" style="margin-top:-1rem;">8:40 AM, Today</span>
+                            </div>
+                        {% else %}
+							<div class="d-flex justify-content-start mb-4" style="margin-top: 0.5rem;">
+								<div class="img_cont_msg">
+                    {% if x.chatter.id == couple.trainerChat.trainer.id%}
+									<img src="{{couple.trainerChat.userimage}}" class="rounded-circle user_img_msg">
+                    {% else %}
+									<img src="{{couple.trainee.userimage}}" class="rounded-circle user_img_msg">
+                    {% endif %}
+                                </div>
+                    {% if x.msg_type == 'image' %}
+								<div class="msg_cotainer">
+                                <img src={{x.getfile}} style = "width: 12em;">
+								</div>
+                    {% elif x.msg_type == 'video' %}
+								<div class="msg_cotainer">
+                                <video width="320" height="240" autoplay controls loop><source src={{x.getfile}} type="video/mp4"></video>
+								</div>
+                    {% elif x.msg_type == 'audio' %}
+								<div class="msg_cotainer">
+                                <audio controls><source src={{x.getfile}} type="audio/ogg"></audio>
+								</div>
+                    {% else %}
+								<div class="msg_cotainer">
+                                    <h6>{{x.chatContentText}}</h6>
+								</div>
+                    {% endif %}
+							</div>
+                            <div>
+                                <span class="msg_time d-flex justify-content-start" style="margin-top:-1rem;margin-left:3rem;">8:40 AM, Today</span>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+<!--							<div class="d-flex justify-content-start mb-4" style="margin-top: 0.5rem;">-->
+							<div>
+								<div id="chat-Msg-img">
+
+								</div>
+								<div  id="chat-Msg">
+
+								</div>
+							</div>
+                            <div>
+<!--                                <span class="msg_time d-flex justify-content-start" style="margin-top:-1rem;margin-left:3rem;">8:40 AM, Today</span>-->
+                            </div>
+
+                        </div>
+						<div class="card-footer">
+							<div class="input-group">
+								<div class="input-group-append">
+                                    <button class="input-group-text attach_btn" type="button" id="filebtn"><i class="fas fa-paperclip" aria-hidden="true"></i></button><input type="file" name="file" id="file" onchange="sendFile()" hidden>
+<!--                                    <span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>-->
+								</div>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 0%;    background-color: black;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" id="progress"></div>
+                                </div>
+								<textarea name="" class="form-control type_msg" id="input" placeholder="Type your message..."></textarea>
+								<div class="input-group-append">
+									<button id="submit" type="button" value="Send" class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+      </div>
+    </main>
+    <!-- JS
+============================================ -->
+    <script>
+        window.setInterval(function() {
+          var elem = document.getElementById('chatScroll');
+          elem.scrollTop = elem.scrollHeight;
+        }, 500);
+    </script>
+
+    <script>
+	$(document).ready(function(){
+$('#action_menu_btn').click(function(){
+	$('.action_menu').toggle();
+});
+	});
+</script>
+
+    {{ roomCode|json_script:"room-code"}}
+    {{ request.user.username|json_script:"user_username"}}
+    {{ request.user.id|json_script:"user_id"}}
+    <script>
+        var chats, x;
+        const user_id = JSON.parse(document.getElementById('user_id').textContent);
+        const user_username = JSON.parse(document.getElementById('user_username').textContent);
+        const roomCode = JSON.parse(document.getElementById('room-code').textContent);
+
+        document.querySelector('#submit').onclick = function(e){
+            const messageInputDom = document.querySelector('#input');
+            const message = messageInputDom.value;
+            if (message != ''){
+            chatSocket.send(JSON.stringify({
+                'message': message,
+                'type':'text',
+                'username': user_username,
+                'id': user_id,
+            }));
+            }
+            messageInputDom.value = '' ;
+        };
+
+        const chatSocket = new WebSocket(
+            'ws://' +
+            window.location.host +
+            '/ws/chatroom/' +
+            roomCode +
+            '/'
+        );
+                document.querySelector('#filebtn').onclick = function(e){
+            document.getElementById('file').click()
+        };
+         //functioin to get the extension
+        function getExtension(filename) {
+            var parts = filename.split('.');
+            return parts[parts.length - 1];
+        }
+
+        //function to check file is image
+        function isImage(filename) {
+            var ext = getExtension(filename);
+            switch (ext.toLowerCase()) {
+              case 'jpg':
+              case 'gif':
+              case 'bmp':
+              case 'png':
+                //etc
+                return true;
+            }
+            return false;
+        }
+
+        //function to check file is video
+        function isVideo(filename) {
+            var ext = getExtension(filename);
+            switch (ext.toLowerCase()) {
+              case 'm4v':
+              case 'avi':
+              case 'mpg':
+              case 'mp4':
+                // etc
+                return true;
+            }
+            return false;
+          }
+
+          //function to check file is audio
+          function isAudio(filename) {
+            var ext = getExtension(filename);
+            switch (ext.toLowerCase()) {
+              case 'mp3':
+              case 'm4a':
+              case 'flac':
+              case 'wav':
+              case 'aac':
+                // etc
+                return true;
+            }
+            return false;
+          }
+
+        const toBase64 = file => new Promise((resolve, reject) => {
+            //console.log(file)
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+        });
+        async function sendFile() {
+           const file = document.querySelector('#file').files[0];
+           if (isImage(file.name)) {
+                var type = 'image'
+           }else if(isVideo(file.name)){
+               var type = 'video'
+           }else if(isAudio(file.name)){
+               var type = 'audio'
+           }else{
+               var type = 'text'
+           }
+           console.log(type)
+            var dataURL = await toBase64(file)
+                console.log(dataURL)
+                chatSocket.send(JSON.stringify({
+                    'message':dataURL,
+                    'type':type,
+                    'username':user_username,
+                    'id': user_id,
+
+                }));
+           }
+
+        chatSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            //for trainer
+            if (data.username == '{{couple.trainerChat.trainer.username}}'){
+                if (data.msgtype == 'image'){
+                    document.getElementById('chat-Msg-img').innerHTML += (
+                        "<div class='d-flex justify-content-start mb-4' style='margin-top: 0.5rem;'>" +
+                            "<div class='img_cont_msg'>" +
+                                "<img src={{couple.trainerChat.userimage}} class='rounded-circle user_img_msg'>" +
+                            "</div>" +
+                                "<div class='msg_cotainer'>" +
+                                    "<img src='data.message' style = 'width: 12em;'>" +
+                                "</div>" +
+                        "</div>" +
+                        "<div>" +
+                            "<span class='msg_time d-flex justify-content-start' style='margin-top:-1rem;margin-left:3rem;'>" +
+                                "8:40 AM, Today" +
+                                "</span>" +
+                        "</div>"
+                        )
+                }
+            else if (data.msgtype == 'video'){
+                document.getElementById('chat-Msg-img').innerHTML += (
+                    "<div class='d-flex justify-content-start mb-4' style='margin-top: 0.5rem;'>" +
+                        "<div class='img_cont_msg'>" +
+                            "<img src={{couple.trainerChat.userimage}} class='rounded-circle user_img_msg'>" +
+                        "</div>" +
+                            "<div class='msg_cotainer'>" +
+                                    "<video width='320' height='240' autoplay controls loop><source src='data.message' type='video/mp4'>" + "</video>" +
+                            "</div>" +
+                    "</div>" +
+                    "<div>" +
+                        "<span class='msg_time d-flex justify-content-start' style='margin-top:-1rem;margin-left:3rem;'>" +
+                            "8:40 AM, Today" +
+                            "</span>" +
+                    "</div>"
+                    )
+                }
+            else if (data.msgtype == 'audio'){
+                document.getElementById('chat-Msg-img').innerHTML += (
+                    "<div class='d-flex justify-content-start mb-4' style='margin-top: 0.5rem;'>" +
+                        "<div class='img_cont_msg'>" +
+                            "<img src={{couple.trainerChat.userimage}} class='rounded-circle user_img_msg'>" +
+                        "</div>" +
+                            "<div class='msg_cotainer'>" +
+                                    "<audio controls autoplay><source src='data.message' type='audio/ogg'>" + "</audio>" +
+                            "</div>" +
+                    "</div>" +
+                    "<div>" +
+                        "<span class='msg_time d-flex justify-content-start' style='margin-top:-1rem;margin-left:3rem;'>" +
+                            "8:40 AM, Today" +
+                            "</span>" +
+                    "</div>"
+                    )
+                }
+            else {
+                document.getElementById('chat-Msg-img').innerHTML += (
+                    "<div class='d-flex justify-content-start mb-4' style='margin-top: 0.5rem;'>" +
+                        "<div class='img_cont_msg'>" +
+                            "<img src={{couple.trainerChat.userimage}} class='rounded-circle user_img_msg'>" +
+                        "</div>" +
+                            "<div class='msg_cotainer'>" +
+                            data.message +
+                            "</div>" +
+                    "</div>" +
+                    "<div>" +
+                        "<span class='msg_time d-flex justify-content-start' style='margin-top:-1rem;margin-left:3rem;'>" +
+                            "8:40 AM, Today" +
+                            "</span>" +
+                    "</div>"
+                    )
+                }
+
+            }
+            // for trainee
+            else{
+                if (data.msgtype == 'image'){
+                    document.getElementById('chat-Msg-img').innerHTML += (
+                        "<div class='d-flex justify-content-start mb-4' style='margin-top: 0.5rem;'>" +
+                            "<div class='img_cont_msg'>" +
+                                "<img src={{couple.trainee.userimage}} class='rounded-circle user_img_msg'>" +
+                            "</div>" +
+                                "<div class='msg_cotainer'>" +
+                                    "<img src='data.message' style = 'width: 12em;'>" +
+                                "</div>" +
+                        "</div>" +
+                        "<div>" +
+                            "<span class='msg_time d-flex justify-content-start' style='margin-top:-1rem;margin-left:3rem;'>" +
+                                "8:40 AM, Today" +
+                                "</span>" +
+                        "</div>"
+                        )
+                    }
+                else if (data.msgtype == 'video'){
+                    document.getElementById('chat-Msg-img').innerHTML += (
+                        "<div class='d-flex justify-content-start mb-4' style='margin-top: 0.5rem;'>" +
+                            "<div class='img_cont_msg'>" +
+                                "<img src={{couple.trainee.userimage}} class='rounded-circle user_img_msg'>" +
+                            "</div>" +
+                                "<div class='msg_cotainer'>" +
+                                    "<video width='320' height='240' autoplay controls loop><source src='data.message' type='video/mp4'>" + "</video>" +
+                                "</div>" +
+                        "</div>" +
+                        "<div>" +
+                            "<span class='msg_time d-flex justify-content-start' style='margin-top:-1rem;margin-left:3rem;'>" +
+                                "8:40 AM, Today" +
+                                "</span>" +
+                        "</div>"
+                        )
+                    }
+                else if (data.msgtype == 'audio'){
+                    document.getElementById('chat-Msg-img').innerHTML += (
+                        "<div class='d-flex justify-content-start mb-4' style='margin-top: 0.5rem;'>" +
+                            "<div class='img_cont_msg'>" +
+                                "<img src={{couple.trainee.userimage}} class='rounded-circle user_img_msg'>" +
+                            "</div>" +
+                                "<div class='msg_cotainer'>" +
+                                    "<audio controls autoplay><source src='data.message' type='audio/ogg'>" + "</audio>" +
+                                "</div>" +
+                        "</div>" +
+                        "<div>" +
+                            "<span class='msg_time d-flex justify-content-start' style='margin-top:-1rem;margin-left:3rem;'>" +
+                                "8:40 AM, Today" +
+                                "</span>" +
+                        "</div>"
+                        )
+                    }
+                else {
+                    document.getElementById('chat-Msg-img').innerHTML += (
+                        "<div class='d-flex justify-content-start mb-4' style='margin-top: 0.5rem;'>" +
+                            "<div class='img_cont_msg'>" +
+                                "<img src={{couple.trainee.userimage}} class='rounded-circle user_img_msg'>" +
+                            "</div>" +
+                                "<div class='msg_cotainer'>" +
+                                    data.message +
+                                "</div>" +
+                        "</div>" +
+                        "<div>" +
+                            "<span class='msg_time d-flex justify-content-start' style='margin-top:-1rem;margin-left:3rem;'>" +
+                                "8:40 AM, Today" +
+                                "</span>" +
+                        "</div>"
+                        )
+                    }
+                }
+
+        }
+
+
+    </script>
+
+    <!-- Modernizer JS -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/vendor/modernizr-3.6.0.min.js"></script>
+    <!-- jQuery JS -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/vendor/jquery-3.3.1.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/vendor/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/vendor/bootstrap.min.js"></script>
+    <!-- Slick Slider JS -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/plugins/slick.min.js"></script>
+    <!-- nice select JS -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/plugins/nice-select.min.js"></script>
+    <!-- audio video player JS -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/plugins/plyr.min.js"></script>
+    <!-- perfect scrollbar js -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <!-- light gallery js -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/plugins/lightgallery-all.min.js"></script>
+    <!-- image loaded js -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/plugins/imagesloaded.pkgd.min.js"></script>
+    <!-- isotope filter js -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/plugins/isotope.pkgd.min.js"></script>
+    <!-- Main JS -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/main.js"></script>
+
+
+</body>
+</html>

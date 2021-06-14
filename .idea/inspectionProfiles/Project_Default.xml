@@ -1,0 +1,76 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="HtmlUnknownTag" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myValues">
+        <value>
+          <list size="7">
+            <item index="0" class="java.lang.String" itemvalue="nobr" />
+            <item index="1" class="java.lang.String" itemvalue="noembed" />
+            <item index="2" class="java.lang.String" itemvalue="comment" />
+            <item index="3" class="java.lang.String" itemvalue="noscript" />
+            <item index="4" class="java.lang.String" itemvalue="embed" />
+            <item index="5" class="java.lang.String" itemvalue="script" />
+            <item index="6" class="java.lang.String" itemvalue="div" />
+          </list>
+        </value>
+      </option>
+      <option name="myCustomValuesEnabled" value="true" />
+    </inspection_tool>
+    <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="W601" />
+          <option value="E501" />
+          <option value="E221" />
+          <option value="E722" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N801" />
+          <option value="N802" />
+          <option value="N806" />
+          <option value="N803" />
+        </list>
+      </option>
+      <option name="ignoredBaseClasses">
+        <list>
+          <option value="unittest.TestCase" />
+          <option value="unittest.case.TestCase" />
+          <option value="Oniomanians.Store.models.Product" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyShadowingBuiltinsInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredNames">
+        <list>
+          <option value="id" />
+          <option value="format" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="Oniomanians.Store.models.Product.objects" />
+          <option value="django.db.models.fields.related.ForeignKey.price" />
+          <option value="Oniomanians.Store.models.Order.id" />
+          <option value="Oniomanians.Store.models.Order.objects" />
+          <option value="Oniomanians.Store.models.Customer.objects" />
+          <option value="Oniomanians.accounts.models.Onion_user.objects" />
+          <option value="Oniomanians.Store.models.Order.orderitem_set" />
+          <option value="django.db.models.fields.files.ImageField.url" />
+          <option value="Oniomanians.accounts.views.Store" />
+          <option value="Oniomanians.Store.models.OrderItem.objects" />
+          <option value="Oniomanians.Store.models.ShippingAddress.objects" />
+          <option value="Oniomanians.adminDashboard.views.Store" />
+          <option value="Oniomanians.Store.models.Discount.objects" />
+          <option value="Oniomanians.Store.models.Coupons.objects" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

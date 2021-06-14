@@ -1,0 +1,794 @@
+{% load static %}
+<html class="no-js" lang="en">
+
+
+<!-- Mirrored from demo.hasthemes.com/adda-preview/adda/profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 09 May 2021 17:26:55 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Adda - Social Network HTML Template</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="https://demo.hasthemes.com/adda-preview/adda/assets/images/favicon.ico">
+
+    <!-- CSS
+	============================================ -->
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adda-preview/adda/assets/css/vendor/bootstrap.min.css">
+    <!-- Icon Font CSS -->
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adda-preview/adda/assets/css/vendor/bicon.min.css">
+        <script src="https://kit.fontawesome.com/e62a230ef4.js" crossorigin="anonymous"></script>
+    <!-- Flat Icon CSS -->
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adda-preview/adda/assets/css/vendor/flaticon.css">
+    <!-- audio & video player CSS -->
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adda-preview/adda/assets/css/plugins/plyr.css">
+    <!-- Slick CSS -->
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adda-preview/adda/assets/css/plugins/slick.min.css">
+    <!-- nice-select CSS -->
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adda-preview/adda/assets/css/plugins/nice-select.css">
+    <!-- perfect scrollbar css -->
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adda-preview/adda/assets/css/plugins/perfect-scrollbar.css">
+    <!-- light gallery css -->
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adda-preview/adda/assets/css/plugins/lightgallery.min.css">
+    <!-- Image cropping cdn -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropper/2.3.4/cropper.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <!-- Main Style CSS -->
+    <link rel="stylesheet"  type="text/css"  href="{% static 'css/profileStyle.css' %}">
+        <style>
+        .statusBar {
+                margin-top: -2%;
+                margin-left: 24%;
+                width: 100%;
+        }
+        .postData {
+                margin-left: 24%;
+        }
+        .rounded{
+            border-radius: 1.25rem!important;
+        }
+        .dropdown-toggle::after {
+            content: none;
+        }
+        input {
+          border-top-style: hidden;
+          border-right-style: hidden;
+          border-left-style: hidden;
+          border-bottom-style: none;
+          background-color: none;
+        }
+
+        textarea {
+          border-top-style: hidden;
+          border-right-style: hidden;
+          border-left-style: hidden;
+          border-bottom-style: none;
+          background-color: none;
+        }
+
+        .no-outline:focus {
+          outline: none;
+        }
+        .circular i {
+              background-color: transparent;
+              border-radius: 50%;
+              border: 2px solid red;
+              padding: 10px;
+              color: white;
+              margin-left: 14rem;
+              margin-top: -3.5rem;
+              position: absolute;
+        }
+        .coverIcon {
+
+                background-color: transparent;
+                border-radius: 50%;
+                border: 2px solid red;
+                padding: 10px;
+                color: white;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- header area start -->
+    <header>
+        <div class="header-top sticky bg-white d-none d-lg-block">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-5">
+                        <!-- header top navigation start -->
+                        <div class="header-top-navigation">
+                            <nav>
+                                <ul>
+                                    <li class="active"><a href="{% url 'home' %}"><img src="{% static 'images/app log.png'%}" alt=""></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- header top navigation start -->
+                    </div>
+
+                    <div class="col-md-5">
+                        <div class="header-top-right d-flex align-items-center justify-content-end">
+                            <!-- header top search start -->
+                            <div class="header-top-search" style="margin-top:2%; margin-right: 27%">
+                                <form class="top-search-box " method="POST">
+                                    {% csrf_token%}
+                                    <input type="text" placeholder="Search" name="search" class="top-search-field">
+                                    <button class="top-search-btn" type="submit"><i class="flaticon-search"></i></button>
+
+                                </form>
+                            </div>
+                            <!-- header top search end -->
+                            <div ><a class="" href="{% url 'home'%}" style="margin-left: 10%"><i class="fas fa-home" style="color: #FFA500;"></i></a></div>
+                            <a href="{% url 'chat'%}" style="margin-left: 5%"><i class="fas fa-comments" style="color: #FFA500;"></i></a>
+                            <a href="{% url 'explore'%}" style="margin-left: 5%"><i class="fas fa-dumbbell" style="color: #FFA500;"></i></a>
+                            <a href="" style="margin-left: 5%"><i class="fas fa-fire-alt" style="color: #FFA500;"></i></a>
+
+                                                        <!-- profile picture start -->
+                            <div class="profile-setting-box" style="margin-left: -45%; margin-right: 31%;">
+                                <div class=" profile-thumb-small dropdown" style="margin-left: 700%">
+
+                                        <button class=" btn btn dropdown-toggle" type="button" data-toggle="dropdown" style="color: none;">
+                                            <img src="{{target.userimage}}" alt="profile picture" class="rounded">
+                                            <span class="caret"></span>
+                                        </button>
+                                    <div class="dropdown-menu">
+                                        <div class="profile-head">
+                                            <h5 class="name"><a href="#">{{target}}</a></h5>
+                                        </div>
+                                        <div class="profile-body">
+                                            <ul>
+                                                <li><a href="{% url 'profile'%}"><i class="flaticon-user"></i>Profile</a></li>
+                                                <li><a href="#"><i class="flaticon-settings"></i>Setting</a></li>
+                                                <li><a href="{% url 'userSignout'%}"><i class="flaticon-unlock"></i>Sign out</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header area end -->
+    <!-- header area start -->
+    <header>
+        <div class="mobile-header-wrapper sticky d-block d-lg-none">
+            <div class="mobile-header position-relative ">
+                <div class="mobile-logo" style="background:none;">
+                    <a href="index.html">
+                        <img src="{% static 'images/app log.png'%}" alt="logo">
+                    </a>
+                </div>
+                <div class="mobile-menu w-100">
+                    <ul>
+                        <li>
+                            <div ><a class="" href="{% url 'home'%}" style="margin-left: 10%"><i class="fas fa-home" style="color: #FFA500;"></i></a></div>
+                        </li>
+                        <li>
+                            <a href="{% url 'chat'%}" style="margin-left: 5%"><i class="fas fa-comments" style="color: #FFA500;"></i></a>
+
+                        </li>
+                        <li>
+                            <a href="{% url 'explore'%}" style="margin-left: 5%"><i class="fas fa-dumbbell" style="color: #FFA500;"></i></a>
+
+                        </li>
+                        <li>
+                            <a href="" style="margin-left: 5%"><i class="fas fa-fire-alt" style="color: #FFA500;"></i></a>
+
+                        </li>
+                    </ul>
+                </div>
+                <div class="mobile-header-profile" style="background:none;">
+                    <!-- profile picture end -->
+                    <div class="profile-thumb profile-setting-box" style="background:none;">
+                        <a href="javascript:void(0)" class="profile-triger">
+                            <figure class="profile-thumb-middle">
+                                <img src="{{target.userimage}}" alt="profile picture">
+                            </figure>
+                        </a>
+                        <div class="profile-dropdown text-left">
+                            <div class="profile-head">
+                                <h5 class="name"><a href="#">{{target}}</a></h5>
+                            </div>
+                            <div class="profile-body">
+                                <ul>
+                                    <li><a href="{% url 'profile' %}"><i class="flaticon-user"></i>Profile</a></li>
+                                    <li><a href="#"><i class="flaticon-message"></i>Inbox</a></li>
+                                    <li><a href="#"><i class="flaticon-document"></i>Activity</a></li>
+                                </ul>
+                                <ul>
+                                    <li><a href="#"><i class="flaticon-settings"></i>Setting</a></li>
+                                    <li><a href="{% url 'userSignout'%}"><i class="flaticon-unlock"></i>Sing out</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- profile picture end -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header area end -->
+
+    <main>
+
+        <div class="main-wrapper">
+            <form action="" method="POST">
+                {% csrf_token%}
+            <div class="profile-banner-large bg-img" data-bg="{{target.coverImg}}">
+                <!-- Button trigger modal -->
+                <button type="button" class=" " data-toggle="modal" data-target="#coverModal" style="margin-left: 93%; margin-top: 25%;"><i class="fas fa-camera coverIcon"></i></button>
+                <!-- Modal -->
+                <div class="modal fade" id="coverModal" tabindex="-1" role="dialog" aria-labelledby="coverModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="coverModalLabel">Add New Cover Picture</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                                <h4></h4>
+                                <div class="">
+                                        <main class="pagee">
+<!--                                            <h2>Upload ,Crop and save.</h2>-->
+                                            <!-- input file -->
+                                            <div class="boxx" style="margin-left: 48%;">
+                                                <label for="file-input" class="btn"><i class="fas fa-file-upload fa-3x" style="color: #FFA500;background-color: transparent; border-radius: 50%; border: 2px solid #FFA500; padding: 20px;"></i></label>
+                                                <input type="file" id="file-input" style="visibility:hidden;">
+                                                <textarea name="coverImage" id="imageurl" style="display: none;" cols="30" rows="10"></textarea>
+                                            </div>
+                                            <!-- leftbox -->
+                                            <div class="boxx-2">
+                                                <div class="result"></div>
+                                            </div>
+                                            <!--rightbox-->
+                                            <div class="boxx-2 img-result hide">
+                                                <!-- result of crop -->
+                                                <img class="cropped" src="" alt="">
+                                            </div>
+                                            <!-- input file -->
+                                            <div class="boxx">
+                                                <div class="optionss hide">
+                                                    <input type="number" class="img-w" style="display: none;" value="400" min="370" max="1100" />
+                                                </div>
+                                                <!-- save btn -->
+                                                <button type="button" class="btnn save hide" style="margin-left: 77%; margin-bottom: 1rem;"><i class="fas fa-check-circle fa-2x" style="color: green;"></i></button>
+                                                <!-- download btn -->
+                                                <a href="" class="btnn download hide" style="display: none;">Download</a>
+                                            </div>
+                                        </main>
+                                </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="profile-menu-area bg-white">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-3 col-md-3">
+                            <div class="profile-picture-box">
+                                <figure class="profile-picture">
+                                    <div class="circular">
+                                        <img src="{{target.userimage}}" alt="profile picture">
+                                        <button type="button" class=" " data-toggle="modal" data-target="#profilePicModal"><i class="fas fa-camera"></i></button>
+                                    </div>
+                                </figure>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 offset-lg-1">
+                            <div class="profile-menu-wrapper">
+                                <div class="main-menu-inner header-top-navigation">
+                                    <nav>
+                                        <ul class="main-menu">
+                                            <li class="active"><a href="#">timeline</a></li>
+                                            <li><a href="https://demo.hasthemes.com/adda-preview/adda/about.html">about</a></li>
+                                            <li><a href="https://demo.hasthemes.com/adda-preview/adda/photos.html">photos & videos</a></li>
+                                            <li><a href="https://demo.hasthemes.com/adda-preview/adda/friends.html">friends</a></li>
+                                            {% if flag == True%}
+                                            <li><a href="{% url 'videoUpload' %}"><i class="fas fa-plus-circle" style="size:20px;color:DC4734"></i></a></li>
+                                            {% endif %}
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 d-none d-md-block">
+                            <div class="profile-edit-panel">
+                                <button type="submit" class="edit-btn">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="profilePicModal" tabindex="-1" role="dialog" aria-labelledby="ppModalLabel" aria-hidden="true">
+                                          <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                              <div class="modal-header">
+                                                <h5 class="modal-title" id="ppModalLabel">Add New Profile Picture</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                  <span aria-hidden="true">&times;</span>
+                                                </button>
+                                              </div>
+                                              <div class="modal-body">
+                                                    <div class=" ">
+                                                        <main class="pagee">
+                <!--                                            <h2>Upload ,Crop and save.</h2>-->
+                                                            <!-- input file -->
+                                                            <div class="boxx" style="margin-left: 50%;">
+                                                                <label for="file-input1" class="btn"><i class="fas fa-file-upload fa-3x" style="color: #FFA500;background-color: transparent; border-radius: 50%; border: 2px solid #FFA500; padding: 20px;"></i></label>
+                                                                <input type="file" id="file-input1" class="" style="visibility:hidden;">
+                                                                <textarea name="proPic" id="imageurl1" style="display: none;" cols="30" rows="10"></textarea>
+                                                            </div>
+                                                            <!-- leftbox -->
+                                                            <div class="boxx-2">
+                                                                <div class="result1"></div>
+                                                            </div>
+                                                            <!--rightbox-->
+                                                            <div class="boxx-2 img-result1 hide">
+                                                                <!-- result of crop -->
+                                                                <img class="cropped1" src="" alt="">
+                                                            </div>
+                                                            <!-- input file -->
+                                                            <div class="boxx">
+                                                                <div class="optionss1 hide">
+                                                                    <input type="number" class="img1-w" value="300" style="display: none;" min="100" max="1200" />
+                                                                </div>
+                                                                <!-- save btn -->
+                                                                <button class="btnn save1 hide" style="margin-left: 77%; margin-bottom: 1rem;"><i class="fas fa-check-circle fa-2x" style="color: green;"></i></button>
+                                                                <!-- download btn -->
+                                                                <a href="" class="btnn download1 hide" style="display: none;">Download</a>
+                                                            </div>
+                                                        </main>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 order-2 order-lg-1" >
+                        <aside class="widget-area profile-sidebar">
+                            <!-- widget single item start -->
+                            <div class="card widget-item">
+                                <div id="username">
+                                    <h4 class="widget-title">{{ target.user.username}}<button onclick="editUsername()" type="button"><i class="fas fa-pen-fancy fa-sm" style="margin-left: 1rem; color: red;"></i></button></h4>
+                                </div>
+                                <div id="usernameEdit" style="display: none;">
+                                    <input type="text" class="no-outline" name="username" placeholder="{{target.user.username}}">
+                                </div>
+                                <div class="widget-body">
+                                    <div class="about-author">
+                                        <div id="about">
+                                        <p>{{target.about}} <button onclick="editAbout()" type="button"><i class="fas fa-pen-fancy" style="margin-left: 1rem; color:red;"></i></button></p>
+                                        </div>
+                                        <div id="aboutEdit" style="display: none;">
+                                            <textarea class="no-outline" name="about" placeholder="About"></textarea>
+                                        </div>
+
+                                        <ul class="author-into-list">
+                                            <li>
+                                                <div id="work">
+                                                    <a href=""><i class="bi bi-office-bag"></i>{{target.work}}</a>
+                                                    <button onclick="editWork()" type="button"><i class="fas fa-pen-fancy fa-sm" style="margin-left: 1rem; color:red;"></i></button>
+                                                </div>
+                                                <div id="workEdit" style="display: none;"><a href=""><i class="bi bi-office-bag"></i></a><input type="text" class="no-outline" name="work" placeholder="{{target.work}}"></div>
+                                            </li>
+                                            <li>
+                                                <div id="home">
+                                                    <a href="#"><i class="bi bi-home"></i>{{target.homeState}}, {{target.homeCountry}}</a>
+                                                    <button onclick="editHome()" type="button"><i class="fas fa-pen-fancy fa-sm" style="margin-left: 1rem; color:red;"></i></button>
+                                                </div>
+                                                <div id="homeEdit" style="display: none;">
+                                                    <a href="#"><i class="bi bi-home"></i></a>
+                                                    <input type="text" class="no-outline" name="homeState" placeholder="{{target.homeState}}">
+                                                    <input type="text" class="no-outline" name="homeCountry" placeholder="{{target.homeCountry}}">
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div id="workAdd">
+                                                    <a href="#"><i class="bi bi-location-pointer"></i>{{target.workState}}, {{target.workCountry}}</a>
+                                                    <button onclick="editWorkAdd()" type="button"><i class="fas fa-pen-fancy fa-sm" style="margin-left: 1rem; color:red;"></i></button>
+                                                </div>
+                                                <div id="workAddEdit" style="display: none;">
+                                                    <a href="#"><i class="bi bi-location-pointer"></i></a>
+                                                    <input type="text" class="no-outline" name="workState" placeholder="{{target.workState}}">
+                                                    <input type="text" class="no-outline" name="workCountry" placeholder="{{target.workCountry}}">
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div id="interests">
+                                                    <a href="#"><i class="bi bi-heart-beat"></i>{{target.interests}}</a>
+                                                    <button onclick="editInterests()" type="button"><i class="fas fa-pen-fancy fa-sm" style="margin-left: 1rem; color:red;"></i></button>
+                                                </div>
+                                                <div id="interestsEdit" style="display: none;">
+                                                    <a href="#"><i class="bi bi-heart-beat"></i></a>
+                                                    <input type="text" class="no-outline" name="interests" placeholder="{{target.interests}}">
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- widget single item end -->
+
+                            <!-- widget single item start -->
+                            <div class="card widget-item">
+                                <h4 class="widget-title">Sweets Memories</h4>
+                                <div class="widget-body">
+                                    <div class="sweet-galley img-gallery">
+                                        <div class="row row-5">
+                                            <div class="col-4">
+                                                <div class="gallery-tem">
+                                                    <figure class="post-thumb">
+                                                        <a class="gallery-selector" href="https://demo.hasthemes.com/adda-preview/adda/assets/images/gallery/gallery-1.jpg">
+                                                            <img src="https://demo.hasthemes.com/adda-preview/adda/assets/images/gallery/gallery-1.jpg" alt="sweet memory">
+                                                        </a>
+                                                    </figure>
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="gallery-tem">
+                                                    <figure class="post-thumb">
+                                                        <a class="gallery-selector" href="https://demo.hasthemes.com/adda-preview/adda/assets/images/gallery/gallery-2.jpg">
+                                                            <img src="https://demo.hasthemes.com/adda-preview/adda/assets/images/gallery/gallery-2.jpg" alt="sweet memory">
+                                                        </a>
+                                                    </figure>
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="gallery-tem">
+                                                    <figure class="post-thumb">
+                                                        <a class="gallery-selector" href="https://demo.hasthemes.com/adda-preview/adda/assets/images/gallery/gallery-3.jpg">
+                                                            <img src="https://demo.hasthemes.com/adda-preview/adda/assets/images/gallery/gallery-3.jpg" alt="sweet memory">
+                                                        </a>
+                                                    </figure>
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="gallery-tem">
+                                                    <figure class="post-thumb">
+                                                        <a class="gallery-selector" href="https://demo.hasthemes.com/adda-preview/adda/assets/images/gallery/gallery-4.jpg">
+                                                            <img src="https://demo.hasthemes.com/adda-preview/adda/assets/images/gallery/gallery-4.jpg" alt="sweet memory">
+                                                        </a>
+                                                    </figure>
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="gallery-tem">
+                                                    <figure class="post-thumb">
+                                                        <a class="gallery-selector" href="https://demo.hasthemes.com/adda-preview/adda/assets/images/gallery/gallery-5.jpg">
+                                                            <img src="https://demo.hasthemes.com/adda-preview/adda/assets/images/gallery/gallery-5.jpg" alt="sweet memory">
+                                                        </a>
+                                                    </figure>
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="gallery-tem">
+                                                    <figure class="post-thumb">
+                                                        <a class="gallery-selector" href="https://demo.hasthemes.com/adda-preview/adda/assets/images/gallery/gallery-6.jpg">
+                                                            <img src="https://demo.hasthemes.com/adda-preview/adda/assets/images/gallery/gallery-6.jpg" alt="sweet memory">
+                                                        </a>
+                                                    </figure>
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="gallery-tem">
+                                                    <figure class="post-thumb">
+                                                        <a class="gallery-selector" href="https://demo.hasthemes.com/adda-preview/adda/assets/images/gallery/gallery-7.jpg">
+                                                            <img src="https://demo.hasthemes.com/adda-preview/adda/assets/images/gallery/gallery-7.jpg" alt="sweet memory">
+                                                        </a>
+                                                    </figure>
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="gallery-tem">
+                                                    <figure class="post-thumb">
+                                                        <a class="gallery-selector" href="https://demo.hasthemes.com/adda-preview/adda/assets/images/gallery/gallery-8.jpg">
+                                                            <img src="https://demo.hasthemes.com/adda-preview/adda/assets/images/gallery/gallery-8.jpg" alt="sweet memory">
+                                                        </a>
+                                                    </figure>
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="gallery-tem">
+                                                    <figure class="post-thumb">
+                                                        <a class="gallery-selector" href="https://demo.hasthemes.com/adda-preview/adda/assets/images/gallery/gallery-9.jpg">
+                                                            <img src="https://demo.hasthemes.com/adda-preview/adda/assets/images/gallery/gallery-9.jpg" alt="sweet memory">
+                                                        </a>
+                                                    </figure>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- widget single item end -->
+
+
+                        </aside>
+                    </div>
+
+                    <div class="col-lg-6 order-1 order-lg-2">
+                    {% for x in vid %}
+                        <div class="card">
+                            <!-- post title start -->
+                            <div class="post-title d-flex align-items-center">
+                                <!-- profile picture end -->
+                                <div class="profile-thumb">
+                                    <a href="#">
+                                        <figure class="profile-thumb-middle">
+                                            <img src="https://demo.hasthemes.com/adda-preview/adda/assets/images/profile/profile-small-29.jpg" alt="profile picture">
+                                        </figure>
+                                    </a>
+                                </div>
+                                <!-- profile picture end -->
+
+                                <div class="posted-author">
+                                    <h6 class="author"><a href="https://demo.hasthemes.com/adda-preview/adda/profile.html">william henry</a></h6>
+                                    <span class="post-time">35 min ago</span>
+                                </div>
+
+                            </div>
+                            <!-- post title start -->
+
+                            <div class="post-content">
+                                <p class="post-desc">
+                                    {{x.title}}
+                                </p>
+                                <div class="plyr__video-embed plyr-youtube">
+
+<!--                                        <iframe src="{{x.feedsvideos}}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+                                        <video width="100%" controls><source src="{{x.feedsvideos}}" type="video/mp4"></video>
+
+                                </div>
+                                <div class="post-meta">
+                                    <button class="post-meta-like">
+                                        <i class="bi bi-heart-beat"></i>
+                                        <span>You and {{x.likeCount}} people like this</span>
+                                        <strong>{{x.likeCount}}</strong>
+                                    </button>
+                                    <ul class="comment-share-meta">
+                                        <li>
+                                            <button class="post-comment">
+                                                <i class="bi bi-chat-bubble"></i>
+                                                <span>{{x.CommentCount}}</span>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="post-share">
+                                                <i class="bi bi-share"></i>
+                                                <span>{{x.shareCount}}</span>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button type="submit" class="post-share">
+                                                <a href="{% url 'addChat' x.trainer.trainer.id %}"><i style="font-weight:.2px" class="fas fa-star-of-david"></i></a>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    {% endfor %}
+                    </div>
+
+                </div>
+            </div>
+            </form>
+        </div>
+
+    </main>
+
+    <!-- Scroll to top start -->
+    <div class="scroll-top not-visible">
+        <i class="bi bi-finger-index"></i>
+    </div>
+    <!-- Scroll to Top End -->
+    <!-- JS
+============================================ -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $("#files").change(function() {
+          filename = this.files[0].name
+          console.log(filename);
+        });
+    </script>
+    <script>
+    function editUsername() {
+          var username = document.getElementById("username");
+          var usernameEdit = document.getElementById("usernameEdit");
+                username.style.display = "none";
+                usernameEdit.style.display = "block";
+        }
+    function editAbout() {
+          var about = document.getElementById("about");
+          var aboutEdit = document.getElementById("aboutEdit");
+                about.style.display = "none";
+                aboutEdit.style.display = "block";
+        }
+    function editWork() {
+      var x = document.getElementById("workEdit");
+      var y = document.getElementById("work");
+            y.style.display = "none";
+            x.style.display = "block";
+        }
+    function editHome() {
+          var home = document.getElementById("home");
+          var homeEdit = document.getElementById("homeEdit");
+                home.style.display = "none";
+                homeEdit.style.display = "block";
+        }
+    function editWorkAdd() {
+      var xAdd = document.getElementById("workAddEdit");
+      var yAdd = document.getElementById("workAdd");
+            yAdd.style.display = "none";
+            xAdd.style.display = "block";
+        }
+    function editInterests() {
+          var interests = document.getElementById("interests");
+          var interestsEdit = document.getElementById("interestsEdit");
+                interests.style.display = "none";
+                interestsEdit.style.display = "block";
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/0.8.1/cropper.min.js" crossorigin="anonymous"></script>
+    <script>
+            let result = document.querySelector('.result'),
+            img_result = document.querySelector('.img-result'),
+            img_w = document.querySelector('.img-w'),
+            img_h = document.querySelector('.img-h'),
+            options = document.querySelector('.optionss'),
+            save = document.querySelector('.save'),
+            cropped = document.querySelector('.cropped'),
+            dwn = document.querySelector('.download'),
+            upload = document.querySelector('#file-input'),
+            cropper = '';
+
+            // on change show image with crop options
+            upload.addEventListener('change', (e) => {
+              if (e.target.files.length) {
+                    // start file reader
+                const reader = new FileReader();
+                reader.onload = (e)=> {
+                  if(e.target.result){
+                            // create new image
+                            let img = document.createElement('img');
+                            img.id = 'image';
+                            img.src = e.target.result
+                            // clean result before
+                            result.innerHTML = '';
+                            // append new image
+                    result.appendChild(img);
+                            // show save btn and options
+                            save.classList.remove('hide');
+                            options.classList.remove('hide');
+                            // init cropper
+                            cropper = new Cropper(img,{
+                            viewMode: 3,});
+                  }
+                };
+                reader.readAsDataURL(e.target.files[0]);
+              }
+            });
+
+            // save on click
+            save.addEventListener('click',(e)=>{
+              e.preventDefault();
+              // get result to data uri
+              let imgSrc = cropper.getCroppedCanvas({
+                    width: img_w.value // input value
+                }).toDataURL();
+              // remove hide class of img
+              cropped.classList.remove('hide');
+                img_result.classList.remove('hide');
+                // show image cropped
+              cropped.src = imgSrc;
+              console.log(imgSrc);
+              document.getElementById("imageurl").innerHTML = imgSrc;
+              dwn.classList.remove('hide');
+              dwn.download = 'imagename.png';
+              dwn.setAttribute('href',imgSrc);
+            });
+        </script>
+    <script>
+            let result1 = document.querySelector('.result1'),
+            img_result1 = document.querySelector('.img-result1'),
+            img_w1 = document.querySelector('.img1-w'),
+            img_h1 = document.querySelector('.img-h'),
+            options1 = document.querySelector('.optionss1'),
+            save1 = document.querySelector('.save1'),
+            cropped1 = document.querySelector('.cropped1'),
+            dwn1 = document.querySelector('.download1'),
+            upload1 = document.querySelector('#file-input1'),
+            cropper1 = '';
+
+            // on change show image with crop options
+            upload1.addEventListener('change', (e) => {
+              if (e.target.files.length) {
+                    // start file reader
+                const reader = new FileReader();
+                reader.onload = (e)=> {
+                  if(e.target.result){
+                            // create new image
+                            let img1 = document.createElement('img');
+                            img1.id = 'image1';
+                            img1.src = e.target.result
+                            // clean result before
+                            result1.innerHTML = '';
+                            // append new image
+                    result1.appendChild(img1);
+                            // show save btn and options
+                            save1.classList.remove('hide');
+                            options1.classList.remove('hide');
+                            // init cropper
+                            cropper1 = new Cropper(img1,{
+                            viewMode: 3,});
+                  }
+                };
+                reader.readAsDataURL(e.target.files[0]);
+              }
+            });
+
+            // save on click
+            save1.addEventListener('click',(e)=>{
+              e.preventDefault();
+              // get result to data uri
+              let imgSrc = cropper1.getCroppedCanvas({
+                    width: img_w1.value // input value
+                }).toDataURL();
+              // remove hide class of img
+              cropped1.classList.remove('hide');
+                img_result1.classList.remove('hide');
+                // show image cropped
+              cropped1.src = imgSrc;
+              console.log(imgSrc);
+              document.getElementById("imageurl1").innerHTML = imgSrc;
+              dwn1.classList.remove('hide');
+              dwn1.download1 = 'imagename.png';
+              dwn1.setAttribute('href',imgSrc);
+            });
+        </script>
+
+    <!-- Modernizer JS -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/vendor/modernizr-3.6.0.min.js"></script>
+    <!-- jQuery JS -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/vendor/jquery-3.3.1.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/vendor/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/vendor/bootstrap.min.js"></script>
+    <!-- Slick Slider JS -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/plugins/slick.min.js"></script>
+    <!-- nice select JS -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/plugins/nice-select.min.js"></script>
+    <!-- audio video player JS -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/plugins/plyr.min.js"></script>
+    <!-- perfect scrollbar js -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <!-- light gallery js -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/plugins/lightgallery-all.min.js"></script>
+    <!-- image loaded js -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/plugins/imagesloaded.pkgd.min.js"></script>
+    <!-- isotope filter js -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/plugins/isotope.pkgd.min.js"></script>
+    <!-- Main JS -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/main.js"></script>
+
+</body>
+
+
+<!-- Mirrored from demo.hasthemes.com/adda-preview/adda/profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 09 May 2021 17:26:56 GMT -->
+</html>

@@ -1,0 +1,134 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form by Colorlib</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static 'fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Faster One' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/e62a230ef4.js" crossorigin="anonymous"></script>
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'css/signupstyle.css'%}">
+</head>
+<body>
+
+    <div class="main">
+
+        <!-- Sign up form -->
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Gymme</h2>
+                        <h3>Sign up to see  photos  &  videos of a wide range of exercises by trainers from world wide.</h3>
+                        <div class="form-group">
+                            <!-- <input type="submit" name="signup" id="signup" class="form-submit2"  value="Log in with facebook "/> -->
+                            <button class="facebook-button"><i class="fab fa-facebook">Sign up with facebook</i></button>
+                        </div>
+                        <div class="separator">OR</div>
+                        <form method="POST" class="register-form" id="register-form">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="username"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="username" id="username" placeholder="Your Name"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                <input type="email" name="email" id="email" placeholder="Your Email"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone"><i class="zmdi zmdi-phone"></i></label>
+                                <input type="number" name="phone" id="phone" placeholder="Your Mobile no."/>
+                            </div>
+                            <div class="form-group">
+                                <label for="password"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="password" id="password" placeholder="Password"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="re_pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                                <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password"/>
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                                <label for="agree-term" class="label-agree-term"><span><span></span></span>By signing up, you agree to our<a href="#" class="term-service">Terms , Data Policy and Cookies Policy</a></label>
+                            </div>
+                            <div class="form-group-divert">
+                                <label for="agree-term" class="label-divert1"><span><span></span></span>Are you a trainer ?<a href="{% url 'trainerSignup'%}" class="term-service">sign up here</a></label>
+                            </div>
+                            <div class="form-group-divert">
+                                <label for="agree-term" class="label-divert2"><span><span></span></span>Already have an account ?<a href="{% url 'userSignin'%}" class="term-service">Log in</a></label>
+                            </div>
+                            <div class="form-group form-button">
+                                <button type="submit" name="signup" id="logbtn" class="form-submit" style="border: none;">Sign up</button>
+                            </div>
+                        </form>
+                        <!-- <div class="form-group">
+                            <label for="loginRedirect">Have an account ?<a href="" style="color: aqua;">Log In</a></label>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script>
+    $('#btn').click(function(){
+    var username =$('#username').val()
+    var email    =$('#email').val()
+    var phone    =$('#phone').val()
+    var password =$('#password').val()
+    var atposition=email.indexOf("@");
+    var dotposition=email.lastIndexOf(".");
+    var   data = {
+            'csrfmiddlewaretoken':'{{csrf_token}}',
+            'username':username,
+            'email':email,
+            'phone':phone,
+            'password':password,
+        }
+        if(username.length<=3 || username.length>30){
+            $('#span').html('<h6>Enter a valid first name</h6>')
+        }else if (atposition<1 || dotposition<atposition+2 || dotposition+2>=email.length){
+            $('#span').html('<h6>Enter a valid email id</h6>')
+        }else if(isNaN(phone)||phone.length!=10){
+            $('#span').html('<h6>Enter a valid phone number</h6>')
+        }else if(password<4){
+            $('#span').html('<h6>Enter a valid password</h6>')
+        }else{
+            console.log('hi')
+            $.ajax({
+                url:'/user_signup/',
+                method:'POST',
+                data:data,
+                dataType:'json',
+                success:function(data){
+                console.log(data)
+                    if(data == 'true'){
+                        alert('user created')
+                        window.location.replace('/')
+                    }
+                    if(data == 'email'){
+                        $('#span').html('<h6>This email id is already taken</h6>')
+                    }
+                    if(data == 'username'){
+                        $('#span').html('<h6>This username is already taken</h6>')
+                    }
+                    if(data == 'phone'){
+                        $('#span').html('<h6>This Phone Number is already taken</h6>')
+                    }
+                }
+            })
+        }
+    })
+</script>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

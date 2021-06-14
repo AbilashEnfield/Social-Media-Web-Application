@@ -1,0 +1,86 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form by Colorlib</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static 'fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Faster One' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/e62a230ef4.js" crossorigin="anonymous"></script>
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'css/signinstyle.css'%}">
+</head>
+<body>
+
+    <div class="main">
+
+        <!-- Sign up form -->
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Gymme</h2>
+                        <form method="POST" class="register-form" id="register-form">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="username"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="username" id="username" placeholder="Your Name"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="password"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="password" id="password" placeholder="Password"/>
+                            </div>
+                            <div class="form-group form-button">
+                                <button type="button" name="signup" id="logbtn" class="facebook-button" style="border: none;">Sign in</button>
+                            </div>
+                        </form>
+                        <div class="separator">OR</div>
+                        <div class="form-group">
+                            <button class="facebook-button"><i class="fab fa-facebook">Sign in with facebook</i></button>
+                        </div>
+                        <div class="form-group-divert">
+                            <label  class="label-divert2"><span><span></span></span>Don't have an account ?<a href="{% url 'userSignup' %}" class="term-service">Sign Up</a></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<script>
+    $('#logbtn').click(function(){
+        var username = $('#username').val()
+        var password = $('#password').val()
+        var data = {
+            'csrfmiddlewaretoken':'{{csrf_token}}',
+            'username':username,
+            'password':password
+        }
+        $.ajax({
+            url:'/user_login/',
+            method:'POST',
+            data:data,
+            dataType:'json',
+            success:function(data){
+                if(data=='true'){
+                    window.location.replace('/admin_dashboard/')
+                }
+                if(data=='false'){
+<!--                    $('#span').html("invalid credentials")-->
+                    alert('invalid credentials')
+                }
+            }
+        })
+    })
+</script>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,361 @@
+{% load static %}
+<html class="no-js" lang="en">
+
+
+<!-- Mirrored from demo.hasthemes.com/adda-preview/adda/profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 09 May 2021 17:26:55 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Adda - Social Network HTML Template</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="https://demo.hasthemes.com/adda-preview/adda/assets/images/favicon.ico">
+
+    <!-- CSS
+	============================================ -->
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adda-preview/adda/assets/css/vendor/bootstrap.min.css">
+    <!-- Icon Font CSS -->
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adda-preview/adda/assets/css/vendor/bicon.min.css">
+    <!-- Flat Icon CSS -->
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adda-preview/adda/assets/css/vendor/flaticon.css">
+    <!-- audio & video player CSS -->
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adda-preview/adda/assets/css/plugins/plyr.css">
+    <!-- Slick CSS -->
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adda-preview/adda/assets/css/plugins/slick.min.css">
+    <!-- nice-select CSS -->
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adda-preview/adda/assets/css/plugins/nice-select.css">
+    <!-- perfect scrollbar css -->
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adda-preview/adda/assets/css/plugins/perfect-scrollbar.css">
+    <!-- light gallery css -->
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adda-preview/adda/assets/css/plugins/lightgallery.min.css">
+    <!-- Main Style CSS -->
+    <link rel="stylesheet"  type="text/css"  href="{% static 'css/profileStyle.css' %}">
+    <style>
+        .video-input label {
+                    display: block;
+                    position: relative;
+                    margin-left: 30rem;
+                    margin-bottom: 2%;
+                    width: 200px;
+                    height: 50px;
+                    border-radius: 25px;
+                    background: #DC4734;
+                    box-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: #fff;
+                    font-weight: bold;
+                    cursor: pointer;
+                    transition: transform .2s ease-out;
+                    }
+.videoFile {
+        opacity: 0;
+        width: 0.1px;
+        height: 0.1px;
+        position: absolute;
+        }
+.video-name {
+        position: absolute;
+        bottom: 66%;
+        left: 25%;
+        font-size: 0.85rem;
+        color: rgb(6, 127, 240);
+        }
+input:hover + label,
+input:focus + label {
+        transform: scale(1.02);
+        }
+input:focus + label {
+        outline: 1px solid #000;
+        outline: -webkit-focus-ring-color auto 2px;
+        }
+.upload-btn{
+        margin-left: 53%;
+        padding: 1%;
+        width: 133px;
+        border-radius: 18px;
+        border-radius: -8px;
+        background: #DC4734
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- header area start -->
+    <header>
+        <div class="header-top sticky bg-white d-none d-lg-block">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-5">
+                        <!-- header top navigation start -->
+                        <div class="header-top-navigation">
+                            <nav>
+                                <ul>
+                                    <li class="active"><a href="{% url 'home' %}"><img src="{% static 'images/app log.png'%}" alt=""></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- header top navigation start -->
+                    </div>
+
+                    <div class="col-md-5">
+                        <div class="header-top-right d-flex align-items-center justify-content-end">
+                            <!-- header top search start -->
+                            <div class="header-top-search" style="margin-top:2%; margin-right: 27%">
+                                <form class="top-search-box " method="POST">
+                                    {% csrf_token%}
+                                    <input type="text" placeholder="Search" name="search" class="top-search-field">
+                                    <button class="top-search-btn" type="submit"><i class="flaticon-search"></i></button>
+
+                                </form>
+                            </div>
+                            <!-- header top search end -->
+                            <div ><a class="" href="{% url 'home'%}" style="margin-left: 10%"><i class="fas fa-home" style="color: #FFA500;"></i></a></div>
+                            <a href="{% url 'chat'%}" style="margin-left: 5%"><i class="fas fa-comments" style="color: #FFA500;"></i></a>
+                            <a href="{% url 'explore'%}" style="margin-left: 5%"><i class="fas fa-dumbbell" style="color: #FFA500;"></i></a>
+                            <a href="" style="margin-left: 5%"><i class="fas fa-fire-alt" style="color: #FFA500;"></i></a>
+
+                                                        <!-- profile picture start -->
+                            <div class="profile-setting-box" style="margin-left: -45%; margin-right: 31%;">
+                                <div class=" profile-thumb-small dropdown" style="margin-left: 700%">
+
+                                        <button class=" btn btn dropdown-toggle" type="button" data-toggle="dropdown" style="color: none;">
+                                            <img src="{{target.userimage}}" alt="profile picture" class="rounded">
+                                            <span class="caret"></span>
+                                        </button>
+                                    <div class="dropdown-menu">
+                                        <div class="profile-head">
+                                            <h5 class="name"><a href="#">{{target}}</a></h5>
+                                        </div>
+                                        <div class="profile-body">
+                                            <ul>
+                                                <li><a href="{% url 'profile'%}"><i class="flaticon-user"></i>Profile</a></li>
+                                                <li><a href="#"><i class="flaticon-settings"></i>Setting</a></li>
+                                                <li><a href="{% url 'userSignout'%}"><i class="flaticon-unlock"></i>Sign out</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header area end -->
+    <!-- header area start -->
+    <header>
+        <div class="mobile-header-wrapper sticky d-block d-lg-none">
+            <div class="mobile-header position-relative ">
+                <div class="mobile-logo" style="background:none;">
+                    <a href="index.html">
+                        <img src="{% static 'images/app log.png'%}" alt="logo">
+                    </a>
+                </div>
+                <div class="mobile-menu w-100">
+                    <ul>
+                        <li>
+                            <div ><a class="" href="{% url 'home'%}" style="margin-left: 10%"><i class="fas fa-home" style="color: #FFA500;"></i></a></div>
+                        </li>
+                        <li>
+                            <a href="{% url 'chat'%}" style="margin-left: 5%"><i class="fas fa-comments" style="color: #FFA500;"></i></a>
+
+                        </li>
+                        <li>
+                            <a href="{% url 'explore'%}" style="margin-left: 5%"><i class="fas fa-dumbbell" style="color: #FFA500;"></i></a>
+
+                        </li>
+                        <li>
+                            <a href="" style="margin-left: 5%"><i class="fas fa-fire-alt" style="color: #FFA500;"></i></a>
+
+                        </li>
+                    </ul>
+                </div>
+                <div class="mobile-header-profile" style="background:none;">
+                    <!-- profile picture end -->
+                    <div class="profile-thumb profile-setting-box" style="background:none;">
+                        <a href="javascript:void(0)" class="profile-triger">
+                            <figure class="profile-thumb-middle">
+                                <img src="{{target.userimage}}" alt="profile picture">
+                            </figure>
+                        </a>
+                        <div class="profile-dropdown text-left">
+                            <div class="profile-head">
+                                <h5 class="name"><a href="#">{{target}}</a></h5>
+                            </div>
+                            <div class="profile-body">
+                                <ul>
+                                    <li><a href="{% url 'profile' %}"><i class="flaticon-user"></i>Profile</a></li>
+                                    <li><a href="#"><i class="flaticon-message"></i>Inbox</a></li>
+                                    <li><a href="#"><i class="flaticon-document"></i>Activity</a></li>
+                                </ul>
+                                <ul>
+                                    <li><a href="#"><i class="flaticon-settings"></i>Setting</a></li>
+                                    <li><a href="{% url 'userSignout'%}"><i class="flaticon-unlock"></i>Sing out</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- profile picture end -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header area end -->
+
+<main>
+    <div class="main-wrapper">
+        <div class="profile-banner-large bg-img" data-bg="https://demo.hasthemes.com/adda-preview/adda/assets/images/banner/profile-banner.jpg">
+        </div>
+        <div class="profile-menu-area bg-white">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-3 col-md-3">
+                        <div class="profile-picture-box">
+                            <figure class="profile-picture">
+                                <a href="profile.html">
+                                    <img src="https://demo.hasthemes.com/adda-preview/adda/assets/images/profile/profile-1.jpg" alt="profile picture">
+                                </a>
+                            </figure>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 offset-lg-1">
+                        <div class="profile-menu-wrapper">
+                            <div class="main-menu-inner header-top-navigation">
+                                <nav>
+                                    <ul class="main-menu">
+                                        <li class="active"><a href="#">timeline</a></li>
+                                        <li><a href="https://demo.hasthemes.com/adda-preview/adda/about.html">about</a></li>
+                                        <li><a href="https://demo.hasthemes.com/adda-preview/adda/photos.html">photos</a></li>
+                                        <li><a href="https://demo.hasthemes.com/adda-preview/adda/friends.html">friends</a></li>
+                                        <li><a href="https://demo.hasthemes.com/adda-preview/adda/about.html">more</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3  d-md-block">
+                        <div class="profile-edit-panel">
+                            <button class="edit-btn">edit profile</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="photo-section mt-20">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12" style="margin-top: 10%;">
+                        <div class="content-box">
+                            <div class="content-body">
+                                <div class="row mt--30 photo-filter" style="position: relative; height: 1500.67px;">
+                                    <div class="share-content-box w-100">
+                                        <form class="share-text-box" method="POST" style="margin-top: 3%;"  enctype="multipart/form-data">
+                                            {% csrf_token %}
+                                            <div class="form-group row video-input">
+                                                <input name="videofile" type="file" class="form-control videoFile" id="videoFile">
+                                                <p class="video-name"></p>
+                                                <label for="videoFile" class="col-sm-2 col-form-label">Insert Video
+                                                </label>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="title" class="col-sm-2 col-form-label">Title</label>
+                                                <div class="col-sm-10">
+                                                    <input name="title" type="text" class="form-control" id="title" placeholder="Title">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="description" class="col-sm-2 col-form-label">Discription</label>
+                                                <div class="col-sm-10">
+                                                    <textarea name="description" class="form-control" id="description" placeholder="Description"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-sm-10">
+                                                    <button type="submit" class="btn btn-primary upload-btn"> Upload </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <!-- <div class="col-sm-6 col-md-4 timeline upload folder" style="position: absolute; left: 0px; top: 0px;">
+                                            <div class="photo-group active">
+                                                <div class="gallery-toggle">
+                                                    <div class="gallery-overlay">
+                                                        <img src="assets/images/photos/photo-blank.jpg" alt="Photo Gallery">
+                                                        <div class="view-icon"></div>
+                                                    </div>
+                                                    <div class="photo-gallery-caption">
+                                                        <h3 class="photos-caption">create folder</h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+        <!-- Scroll to top start -->
+    <div class="scroll-top not-visible">
+        <i class="bi bi-finger-index"></i>
+    </div>
+    <!-- Scroll to Top End -->
+   <!-- JS
+============================================ -->
+
+    <!-- Modernizer JS -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/vendor/modernizr-3.6.0.min.js"></script>
+    <!-- jQuery JS -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/vendor/jquery-3.3.1.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/vendor/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/vendor/bootstrap.min.js"></script>
+    <!-- Slick Slider JS -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/plugins/slick.min.js"></script>
+    <!-- nice select JS -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/plugins/nice-select.min.js"></script>
+    <!-- audio video player JS -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/plugins/plyr.min.js"></script>
+    <!-- perfect scrollbar js -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <!-- light gallery js -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/plugins/lightgallery-all.min.js"></script>
+    <!-- image loaded js -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/plugins/imagesloaded.pkgd.min.js"></script>
+    <!-- isotope filter js -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/plugins/isotope.pkgd.min.js"></script>
+    <!-- Main JS -->
+    <script src="https://demo.hasthemes.com/adda-preview/adda/assets/js/main.js"></script>
+
+</body>
+<script>
+    const file = document.querySelector('#videoFile');
+file.addEventListener('change', (e) => {
+  // Get the selected file
+  const [file] = e.target.files;
+  // Get the file name and size
+  const { name: fileName, size } = file;
+  // Convert size in bytes to kilo bytes
+  const fileSize = (size / 1000).toFixed(2);
+  // Set the text content
+  const fileNameAndSize = `${fileName} - ${fileSize}KB`;
+  document.querySelector('.video-name').textContent = fileNameAndSize;
+});
+</script>
+
+
+</html>
