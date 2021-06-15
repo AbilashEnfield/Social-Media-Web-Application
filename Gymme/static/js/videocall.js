@@ -107,11 +107,11 @@ var userMedia = navigator.mediaDevices.getUserMedia(constraints)
             audioTracks[0].enabled = !audioTracks[0].enabled;
 
             if(audioTracks[0].enabled){
-                document.getElementById("mic-btn").src = "http://127.0.0.1:8000/static/images/mic-btn.png";
+                document.getElementById("mic-btn").src = "http://128.199.23.203/static/images/mic-btn.png";
 
                 return;
             }
-            document.getElementById("mic-btn").src = "http://127.0.0.1:8000/static/images/mic-mute-btn.jpg";
+            document.getElementById("mic-btn").src = "http://128.199.23.203/static/images/mic-mute-btn.jpg";
 
         });
 
